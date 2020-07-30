@@ -10,6 +10,7 @@ var bodyParser = require('body-parser');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var bcrypt = require('bcryptjs');
+/*Connecting to db*/
 const MongoClient = require('mongodb').MongoClient;
 const MongoStore = require('connect-mongo')(session);
 var mongoose = require('mongoose');
