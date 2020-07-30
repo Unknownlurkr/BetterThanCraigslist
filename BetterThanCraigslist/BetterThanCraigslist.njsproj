@@ -41,6 +41,12 @@
     <Content Include="views\login.pug">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="views\partials\footer.pug">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="views\partials\header.pug">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="views\register.pug">
       <SubType>Code</SubType>
     </Content>
@@ -52,6 +58,7 @@
     <Folder Include="public\stylesheets\" />
     <Folder Include="routes\" />
     <Folder Include="views\" />
+    <Folder Include="views\partials\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />
   <ProjectExtensions>
