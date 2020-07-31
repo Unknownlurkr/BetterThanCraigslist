@@ -60,4 +60,10 @@ router.get('/login', function (req, res) {
     res.render('login');
 });
 
+/*Get Items page: this will display all of the items added for sale.*/
+router.get('/items', function (req, res) {
+    res.render('items');
+});
+
+
 module.exports = router;
