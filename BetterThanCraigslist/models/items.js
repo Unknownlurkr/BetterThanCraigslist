@@ -14,9 +14,12 @@ const ItemsSchema = new mongoose.Schema({
     contact: {
         type: String
     },
-    userId: {
-        type: Int
+    user: {
+        type: String
     }
 });
 
 const Items = mongoose.model("Items", ItemsSchema);
+
+
+module.exports = Items;
