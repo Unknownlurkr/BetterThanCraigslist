@@ -6,7 +6,7 @@ const ItemsSchema = new mongoose.Schema({
         type: String
     },
     price: {
-        type: double
+        type: String 
     },
     city: {
         type: String

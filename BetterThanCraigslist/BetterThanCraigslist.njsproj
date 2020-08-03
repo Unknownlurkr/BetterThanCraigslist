@@ -59,6 +59,9 @@
     <Content Include="views\register.pug">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="views\users.pug">
+      <SubType>Code</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="models\" />

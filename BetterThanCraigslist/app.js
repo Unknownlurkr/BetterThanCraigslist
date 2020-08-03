@@ -22,9 +22,23 @@ client.connect(err => {
     client.close();
 });
 
+//Connect to our database
+try {
+    mongoose.connect(uri, { useNewUrlParser: true });
+    var db = mongoose.connection;
+    db.on('error', function (err) {
+        console.log(err);
+    });
+    db.once('open', function (callback) {
+        console.log('Connected to MongoDB');
+    });
+} catch (err) {
+    console.log("Error : " + err);
+}
 var routes = require('./routes/index');
 var users = require('./routes/users');
-
+var userModel = require('./models/user');
+var userId = require('./models/items');
 var app = express();
 
 // view engine setup
@@ -38,9 +52,52 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+// required for passport session
+app.use(session({
+    secret: 'secrettexthere',
+    saveUninitialized: true,
+    resave: true
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 app.use('/', routes);
 app.use('/users', users);
+
+//Serialize user
+passport.serializeUser(function (user, done) {
+    done(null, user.id)
+});
+
+//Deserialize user try to find username
+passport.deserializeUser(function (id, done) {
+    userModel.findById(id, function (err, user) {
+        done(err, user);
+    });
+});
+
+//Local strategy used for logging users
+passport.use(new LocalStrategy(
+    function (username, password, done) {
+        userModel.findOne({
+            username: username
+        }, function (err, user) {
+            if (err) {
+                return done(err);
+            }
+
+            if (!user) {
+                return done(null, false);
+            }
+
+            //Compare hashed passwords
+            if (!bcrypt.compareSync(password, user.password)) {
+                return done(null, false);
+            }
+
+            return done(null, user);
+        });
+    }
+));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
