@@ -2,6 +2,8 @@
 Final project for COMP2068
 Brittany Samuels
 
+https://notbetterthancraigslist.herokuapp.com/index
+
 How it works:
 -A user can login to their account or register for the account.Once logged in users can display all of the usersnames in /users view. Registered users are instantly directed to the homepage.
 -A user can add an item by clicking on the "Insert data" link which routes the user to the page where they can add a post with a photo. (you may have to go back to the index to view your post)
