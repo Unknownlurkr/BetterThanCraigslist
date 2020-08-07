@@ -1,0 +1,3 @@
+C:\Users\bsamu\source\repos\BetterThanCraigslist\BetterThanCraigslist\obj\Release\BetterThanCraigslist.njsproj.CoreCompileInputs.cache
+C:\Users\bsamu\source\repos\BetterThanCraigslist\BetterThanCraigslist\bin\Microsoft.NodejsTools.WebRole.dll
+C:\Users\bsamu\source\repos\BetterThanCraigslist\BetterThanCraigslist\obj\Release\BetterThanCraigslist.njsprojAssemblyReference.cache

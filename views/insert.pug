@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h3 Post your ad!
+  //Insert form
+  form(method='POST' action='/insert' enctype='multipart/form-data')
+    div
+        h2 Insert name
+        input(type='text' name='name')
+    div
+        h2 Description
+        input(type='text' name='description')
+    div
+        h2 Image
+        input(type='file' name='image')
+    div
+        button(type='submit' value='Submit') Submit
