@@ -46,13 +46,13 @@ router.get('/logout', function (req, res) {
 
 /*POST for register*/
 router.post('/register', function (req, res) {
-    //Insert user
+    //Inserting the user
     bcrypt.hash(req.body.password, 10, function (err, hash) {
         var registerUser = {
             username: req.body.username,
             password: hash
         }
-        //Check if user already exists
+        //Check if a user already exists
         userModel.find({ username: registerUser.username }, function (err, user) {
             if (err)
                 console.log(err);
@@ -91,19 +91,19 @@ router.get('/insert', function (req, res) {
 /* POST insert page */
 router.post('/insert', function (req, res) {
     var form = new formidable.IncomingForm();
-    //Specify our image file directory
+    //Specify image file directory
     form.uploadDir = path.join(__dirname, '../public/images');
     form.parse(req, function (err, fields, files) {
         console.log('Parsed form.');
-        //Update filename
+        //Update the filename
         files.image.name = fields.name + '.' + files.image.name.split('.')[1];
         //Create a new article using the Articles Model Schema
         const items = new userModel({ name: fields.name, description: fields.description, image: files.image.name });
-        //Insert article into DB
+        //Insert post into DB
         items.save(function (err) {
             console.log(err);
         });
-        //Upload file on our server
+        //Upload file on server
         fs.rename(files.image.path, path.join(form.uploadDir, files.image.name), function (err) {
             if (err) console.log(err);
         });

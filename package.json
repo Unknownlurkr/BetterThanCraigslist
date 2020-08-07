@@ -5,6 +5,10 @@
   "scripts": {
     "start": "node app"
   },
+  "keywords": [
+    "example",
+    "heroku"
+  ],
   "description": "BetterThanCraigslist",
   "author": {
     "name": ""
